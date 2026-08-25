@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header" data-overlay>
+  <header class="site-header">
     <a class="logo" href="index.html" aria-label="Special-Style">
       <img src="assets/logos/logo.svg" alt="" width="65" height="80" />
     </a>
     <button class="nav-toggle" type="button" aria-label="Меню">Меню</button>
     <nav class="nav-links">
-      <a class="is-active" href="projects.html">Проекты</a>
+      <a aria-current="page" href="projects.html">Проекты</a>
       <a href="journal.html">Журнал</a>
       <a href="in-progress.html">В работе</a>
       <a href="about.html">О бюро</a>
@@ -25,18 +25,13 @@
     </nav>
   </header>
 
-  <section class="hero hero--projects" data-hero>
-    <img src="assets/heroes/projects.jpg" alt="Коллаж интерьеров бюро" width="4320" height="2400" />
-    <div class="hero-copy">
-      <h1>Проекты</h1>
-    </div>
+  <section class="page-hero-lite">
+    <h1>Проекты</h1>
+    <p class="kicker">Только реальные фото, не визуализации</p>
   </section>
 
-  <section class="page-block page-block--last">
+  <section class="page-block page-block--tight page-block--last">
     <div class="wrap">
-      <div class="center-copy" style="margin-bottom: 96px;">
-        <h2>Только реальные фото, не визуализации</h2>
-      </div>
       <div class="projects-grid">
         <a class="project-card" href="projects/krestovsky.html">
           <span class="thumb"><img src="assets/projects/krestovsky.jpg" alt="Крестовский остров" /></span>
@@ -91,14 +86,6 @@
           <h2>ЖК «Дирижабль»</h2>
         </article>
         <article class="project-card">
-          <span class="thumb"><img src="assets/projects/mosfilmovskaya.jpg" alt="Мосфильмовская" /></span>
-          <h2>Мосфильмовская</h2>
-        </article>
-        <article class="project-card">
-          <span class="thumb"><img src="assets/projects/vtb.jpg" alt="ЖК ВТБ Арена Парк" /></span>
-          <h2>ЖК «ВТБ Арена Парк»</h2>
-        </article>
-        <article class="project-card">
           <span class="thumb"><img src="assets/projects/wellhouse.jpg" alt="ЖК Wellhouse" /></span>
           <h2>ЖК Wellhouse</h2>
         </article>
@@ -110,9 +97,9 @@
           <span class="thumb"><img src="assets/projects/la-metamorphose.jpg" alt="La Metamorphose" /></span>
           <h2>La Metamorphose</h2>
         </article>
-        <article class="project-card is-wide">
-          <span class="thumb"><img src="assets/projects/balchug.jpg" alt="ЖК Балчуг" /></span>
-          <h2>ЖК «Балчуг»</h2>
+        <article class="project-card">
+          <span class="thumb"><img src="assets/projects/la-metamorphose-2.jpg" alt="La Metamorphose" /></span>
+          <h2>La Metamorphose</h2>
         </article>
       </div>
     </div>
