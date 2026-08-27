@@ -30,7 +30,8 @@ body {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 26px;
-  line-height: 1.45;
+  line-height: 1.95;
+  text-underline-offset: -8px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -287,6 +288,10 @@ textarea {
 .split > p,
 .journal-meta p {
   margin: 0;
+}
+
+.split > p {
+  margin-block-start: -9px;
 }
 
 .split > .label,
@@ -614,7 +619,7 @@ textarea {
 .journal-meta a {
   font-weight: 600;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
 }
 
 .journal-meta .date {
@@ -871,6 +876,10 @@ textarea {
 }
 
 @media (max-width: 1100px) {
+  .split > p {
+    margin-block-start: 0;
+  }
+
   .split,
   .split--form,
   .step,
