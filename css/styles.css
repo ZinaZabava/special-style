@@ -30,7 +30,7 @@ body {
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 26px;
-  line-height: 1.98;
+  line-height: 0.99;
   text-underline-offset: -8px;
   -webkit-font-smoothing: antialiased;
 }
@@ -86,7 +86,7 @@ textarea {
 
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
   gap: clamp(20px, 8vw, 148px);
@@ -316,6 +316,27 @@ textarea {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
+}
+
+.nav-links a,
+.hero-copy p,
+.kicker,
+.values h3,
+.featured-meta,
+.label,
+.accordion-btn,
+.step-num,
+.award-meta,
+.project-card h2,
+.journal-meta,
+.facts dt,
+.pager,
+.footer-brand,
+.footer-links,
+.nav-toggle,
+.form button,
+.lightbox-close {
+  white-space: nowrap;
 }
 
 .team-grid,
