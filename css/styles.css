@@ -297,6 +297,7 @@ textarea {
 .split > .label,
 .split > p,
 .journal-meta a,
+.journal-meta .title,
 .featured-meta p,
 .featured-meta a {
   text-box-trim: trim-start;
@@ -637,8 +638,12 @@ textarea {
   line-height: 1.4;
 }
 
-.journal-meta a {
+.journal-meta a,
+.journal-meta .title {
   font-weight: 600;
+}
+
+.journal-meta a {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
