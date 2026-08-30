@@ -495,7 +495,7 @@ textarea {
   text-transform: uppercase;
 }
 
-.award-row > .award-meta {
+.award-row > p:not(.award-meta) {
   margin-top: -25px;
 }
 
@@ -959,7 +959,7 @@ textarea {
     padding-top: 96px;
   }
 
-  .award-row > .award-meta {
+  .award-row > p:not(.award-meta) {
     margin-top: 0;
   }
 }
