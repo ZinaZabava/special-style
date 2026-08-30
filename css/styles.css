@@ -884,7 +884,7 @@ textarea {
 .site-footer {
   background: var(--charcoal);
   color: var(--beige);
-  height: 180px;
+  height: 210px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -893,8 +893,8 @@ textarea {
 
 .footer-logo {
   display: block;
-  width: 230px;
-  height: 180px;
+  width: 161.5px;
+  height: 90px;
   flex-shrink: 0;
   color: var(--beige);
 }
@@ -907,7 +907,8 @@ textarea {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 14px;
