@@ -440,8 +440,9 @@ textarea {
 }
 
 .accordion-btn img {
-  width: 24px;
-  height: 20px;
+  width: 12px;
+  height: 10px;
+  flex-shrink: 0;
   transition: transform 200ms ease;
 }
 
