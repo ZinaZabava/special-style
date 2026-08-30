@@ -377,6 +377,10 @@ textarea {
   text-transform: uppercase;
 }
 
+.person p {
+  font-size: calc(14px * 2 / 3);
+}
+
 .person h2 + p {
   margin-top: -8px;
 }
