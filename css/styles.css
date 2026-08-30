@@ -333,7 +333,7 @@ textarea {
 .journal-meta,
 .facts dt,
 .pager,
-.footer-brand,
+.footer-logo,
 .footer-links,
 .nav-toggle,
 .form button,
@@ -870,30 +870,24 @@ textarea {
 .site-footer {
   background: var(--charcoal);
   color: var(--beige);
-  min-height: 180px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 48px var(--pad-x);
+  padding: 0 var(--pad-x);
 }
 
-.footer-brand {
-  font-family: var(--font-sans);
-  font-weight: 500;
-}
-
-.footer-brand strong {
+.footer-logo {
   display: block;
-  font-size: 17px;
-  letter-spacing: 0.18em;
-  font-weight: 500;
+  width: 230px;
+  height: 180px;
+  flex-shrink: 0;
+  color: var(--beige);
 }
 
-.footer-brand span {
-  display: block;
-  margin-top: 10px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
+.footer-logo img {
+  width: 100%;
+  height: 100%;
 }
 
 .footer-links {
@@ -901,9 +895,11 @@ textarea {
   flex-wrap: wrap;
   gap: 8px;
   font-family: var(--font-sans);
+  font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  line-height: 1.4;
 }
 
 .footer-links a:hover {
@@ -998,9 +994,11 @@ textarea {
   }
 
   .site-footer {
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    gap: 0;
+    padding-bottom: 32px;
   }
 }
 
