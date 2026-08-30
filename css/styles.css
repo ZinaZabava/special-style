@@ -329,6 +329,7 @@ textarea {
 .step-num,
 .award-meta,
 .project-card h2,
+.person h2,
 .journal-meta,
 .facts dt,
 .pager,
@@ -349,10 +350,15 @@ textarea {
 }
 
 .person {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.person .thumb {
+  display: block;
   height: 337px;
   overflow: hidden;
-  color: var(--beige);
 }
 
 .person img {
@@ -361,59 +367,43 @@ textarea {
   object-fit: cover;
 }
 
-.person::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
+.person h2,
+.person p {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.person div {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  padding: 16px;
-}
-
-.person strong {
-  display: block;
-  font-family: var(--font-garamond);
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.5;
-}
-
-.person em {
-  display: block;
-  margin-top: 8px;
-  font-family: var(--font-garamond);
-  font-style: normal;
-  font-size: 12px;
-  line-height: 1;
+.person h2 + p {
+  margin-top: -8px;
 }
 
 .office-grid {
   display: grid;
-  grid-template-columns: 435px 1fr;
   gap: 16px;
   margin-top: 128px;
+}
+
+.office-row {
+  display: grid;
+  gap: 16px;
+}
+
+.office-row--nw {
+  grid-template-columns: 435px 1fr;
+}
+
+.office-row--wn {
+  grid-template-columns: 1fr 435px;
 }
 
 .office-grid img {
   width: 100%;
   height: 496px;
   object-fit: cover;
-}
-
-.office-grid img:nth-child(3) {
-  grid-column: 1 / 2;
-}
-
-.office-grid img:nth-child(1),
-.office-grid img:nth-child(4) {
-  height: 496px;
 }
 
 .accordion {
@@ -438,8 +428,8 @@ textarea {
   color: var(--charcoal);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: 21px;
+  font-weight: 400;
+  font-size: 15px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: left;
@@ -472,7 +462,9 @@ textarea {
 }
 
 .step-num {
+  margin: 0;
   font-family: var(--font-sans);
+  font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -489,17 +481,26 @@ textarea {
   margin-top: 48px;
 }
 
+.award-row > p {
+  margin: 0;
+}
+
 .award-meta {
   display: flex;
   gap: 8px;
   font-family: var(--font-sans);
+  font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
+.award-row > .award-meta {
+  margin-top: -25px;
+}
+
 .award-meta span:first-child {
-  width: 50px;
+  width: 140px;
   flex-shrink: 0;
 }
 
@@ -934,6 +935,9 @@ textarea {
   .detail-intro,
   .journal-media,
   .office-grid,
+  .office-row,
+  .office-row--nw,
+  .office-row--wn,
   .gallery-row--2,
   .gallery-row--2r {
     grid-template-columns: 1fr;
@@ -958,6 +962,10 @@ textarea {
   .page-block {
     padding-top: 96px;
   }
+
+  .award-row > .award-meta {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 720px) {
@@ -979,7 +987,7 @@ textarea {
   }
 
   .hero,
-  .person,
+  .person .thumb,
   .project-card .thumb,
   .journal-media img,
   .gallery-row img,
