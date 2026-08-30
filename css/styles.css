@@ -767,6 +767,10 @@ textarea {
   margin: 0;
 }
 
+.gallery-copy p:not(.kicker-line) + p {
+  margin-top: 1.1em;
+}
+
 .gallery-copy .kicker-line {
   color: var(--olive);
   margin: 0 0 1.1em;
