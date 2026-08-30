@@ -474,6 +474,11 @@ textarea {
   text-transform: uppercase;
 }
 
+.step > p:not(.step-num) {
+  margin: 0;
+  margin-top: -14px;
+}
+
 .award-row {
   display: grid;
   grid-template-columns: 451px 1fr;
@@ -963,7 +968,8 @@ textarea {
     padding-top: 96px;
   }
 
-  .award-row > p:not(.award-meta) {
+  .award-row > p:not(.award-meta),
+  .step > p:not(.step-num) {
     margin-top: 0;
   }
 }
