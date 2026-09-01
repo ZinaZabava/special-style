@@ -1560,4 +1560,20 @@ body.lightbox-open .site-header {
     object-fit: contain;
     display: block;
   }
+
+  .project-detail .gallery-row + .gallery-copy,
+  .project-detail .thumb-mosaic + .gallery-copy {
+    margin-top: 0;
+  }
+
+  .project-detail .gallery-copy {
+    padding: var(--stack-gap-l) var(--pad-x);
+    margin-top: 0;
+  }
+
+  .project-detail .gallery-copy + .gallery-row,
+  .project-detail .gallery-copy + .thumb-mosaic,
+  .project-detail .gallery-copy + .mosaic-frame {
+    margin-top: 0;
+  }
 }
