@@ -196,7 +196,53 @@
     });
   }
 
-  applyMobileOrientation();
-  mobileImageMq.addEventListener("change", applyMobileOrientation);
-  window.addEventListener("resize", applyMobileOrientation);
+  var mobileGalleryRestores = [];
+
+  function restoreMobileGalleryOrder() {
+    mobileGalleryRestores.reverse().forEach(function (item) {
+      item.parent.insertBefore(item.node, item.next);
+    });
+    mobileGalleryRestores.length = 0;
+  }
+
+  function trackMove(node) {
+    mobileGalleryRestores.push({
+      parent: node.parentNode,
+      node: node,
+      next: node.nextSibling,
+    });
+  }
+
+  function applyMobileGalleryOrder() {
+    restoreMobileGalleryOrder();
+    if (!mobileImageMq.matches) return;
+
+    document.querySelectorAll(".gallery-copy").forEach(function (copy) {
+      var next = copy.nextElementSibling;
+      if (!next) return;
+      if (next.classList.contains("gallery-row") || next.classList.contains("thumb-mosaic")) {
+        trackMove(copy);
+        next.after(copy);
+      }
+    });
+
+    document.querySelectorAll(".detail-intro").forEach(function (section) {
+      var frame = section.querySelector(":scope > .frame");
+      var paragraph = section.querySelector(":scope > p");
+      if (!frame || !paragraph) return;
+      if (paragraph.compareDocumentPosition(frame) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        trackMove(frame);
+        section.insertBefore(frame, paragraph);
+      }
+    });
+  }
+
+  function applyMobileLayout() {
+    applyMobileGalleryOrder();
+    applyMobileOrientation();
+  }
+
+  applyMobileLayout();
+  mobileImageMq.addEventListener("change", applyMobileLayout);
+  window.addEventListener("resize", applyMobileLayout);
 })();
