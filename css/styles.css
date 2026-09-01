@@ -1153,6 +1153,8 @@ body.lightbox-open .site-header {
     --stack-gap-caption: 16px;
     --project-mobile-portrait-height: 480px;
     --project-mobile-landscape-height: 234px;
+    --project-mosaic-portrait-height: 128px;
+    --project-mosaic-landscape-height: 80px;
   }
 
   .nav-links {
@@ -1585,20 +1587,22 @@ body.lightbox-open .site-header {
     padding: 0 var(--pad-x) var(--stack-gap-l);
   }
 
-  .project-detail .thumb-mosaic img,
-  .project-detail .thumb-mosaic img.span-2,
-  .project-detail .thumb-mosaic img.mobile-landscape,
-  .project-detail .thumb-mosaic img.mobile-portrait,
-  .project-detail .thumb-mosaic img.span-2.mobile-landscape {
-    grid-column: span 1;
-    grid-row: auto;
+  .project-detail .thumb-mosaic img {
     width: 100%;
-    aspect-ratio: 1;
-    height: auto;
-    min-height: 0;
+    display: block;
     object-fit: cover;
     object-position: center;
-    display: block;
+  }
+
+  .project-detail .thumb-mosaic img.mobile-portrait {
+    grid-column: span 1;
+    height: var(--project-mosaic-portrait-height);
+  }
+
+  .project-detail .thumb-mosaic img.mobile-landscape,
+  .project-detail .thumb-mosaic img.span-2.mobile-landscape {
+    grid-column: span 2;
+    height: var(--project-mosaic-landscape-height);
   }
 
   .project-detail .gallery-row + .gallery-copy,

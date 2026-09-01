@@ -166,6 +166,8 @@
       card.classList.toggle("is-landscape", landscape);
       scheduleProjectsGridReorder();
     }
+    var mosaic = img.closest(".project-detail .thumb-mosaic");
+    if (mosaic) scheduleThumbMosaicReorder();
     var person = img.closest(".person");
     if (person) person.classList.toggle("is-landscape", landscape);
   }
@@ -315,10 +317,90 @@
     });
   }
 
+  var thumbMosaicRestores = [];
+  var thumbMosaicReorderTimer;
+
+  function scheduleThumbMosaicReorder() {
+    if (!mobileImageMq.matches) return;
+    clearTimeout(thumbMosaicReorderTimer);
+    thumbMosaicReorderTimer = setTimeout(reorderThumbMosaics, 40);
+  }
+
+  function restoreThumbMosaicOrder() {
+    thumbMosaicRestores.forEach(function (item) {
+      item.order.forEach(function (img) {
+        item.mosaic.appendChild(img);
+      });
+    });
+    thumbMosaicRestores.length = 0;
+  }
+
+  function isWideMosaicImage(img) {
+    return img.classList.contains("mobile-landscape");
+  }
+
+  function packMosaicImages(images) {
+    var remaining = images.slice();
+    var output = [];
+    var col = 0;
+
+    while (remaining.length > 0) {
+      var img = remaining[0];
+      var wide = isWideMosaicImage(img);
+
+      if (wide) {
+        if (col === 1 || col === 3) {
+          var portraitIdx = -1;
+          for (var i = 1; i < remaining.length; i += 1) {
+            if (!isWideMosaicImage(remaining[i])) {
+              portraitIdx = i;
+              break;
+            }
+          }
+          if (portraitIdx > 0) {
+            output.push(remaining.splice(portraitIdx, 1)[0]);
+            col += 1;
+            if (col > 3) col = 0;
+          }
+        }
+        if (col > 2) col = 0;
+        remaining.shift();
+        output.push(img);
+        col += 2;
+        if (col > 3) col = 0;
+      } else {
+        remaining.shift();
+        output.push(img);
+        col += 1;
+        if (col > 3) col = 0;
+      }
+    }
+
+    return output;
+  }
+
+  function reorderThumbMosaics() {
+    restoreThumbMosaicOrder();
+    if (!mobileImageMq.matches) return;
+
+    document.querySelectorAll(".project-detail .thumb-mosaic").forEach(function (mosaic) {
+      var images = Array.from(mosaic.querySelectorAll(":scope > img"));
+      if (!images.length) return;
+
+      thumbMosaicRestores.push({ mosaic: mosaic, order: images.slice() });
+
+      var packed = packMosaicImages(images);
+      packed.forEach(function (img) {
+        mosaic.appendChild(img);
+      });
+    });
+  }
+
   function applyMobileLayout() {
     applyMobileGalleryOrder();
     applyMobileOrientation();
     reorderProjectsGrid();
+    reorderThumbMosaics();
   }
 
   applyMobileLayout();
