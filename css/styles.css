@@ -645,6 +645,12 @@ textarea {
   grid-column: span 2;
 }
 
+@media (min-width: 721px) {
+  .projects-grid .project-card.is-home-mobile-only {
+    display: none;
+  }
+}
+
 .project-card .thumb {
   display: block;
   height: 480px;
