@@ -29,10 +29,10 @@ body {
   color: var(--charcoal);
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 26px;
-  line-height: 1.98;
+  font-size: 14px;
+  line-height: 1.45;
   text-wrap: pretty;
-  text-underline-offset: -8px;
+  text-underline-offset: -4px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -291,16 +291,16 @@ textarea {
   margin: 0;
 }
 
-.split > p {
-  margin-block-start: -6.5px;
-}
-
 .split > .label,
 .split > p,
 .journal-meta a,
 .journal-meta .title,
 .featured-meta p,
-.featured-meta a {
+.featured-meta a,
+.award-meta,
+.award-row > p:not(.award-meta),
+.step-num,
+.step > p:not(.step-num) {
   text-box-trim: trim-start;
   text-box-edge: cap alphabetic;
 }
@@ -478,7 +478,6 @@ textarea {
 
 .step > p:not(.step-num) {
   margin: 0;
-  margin-top: -14px;
 }
 
 .award-row {
@@ -504,10 +503,6 @@ textarea {
   font-size: 15px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-}
-
-.award-row > p:not(.award-meta) {
-  margin-top: -14px;
 }
 
 .award-meta span:first-child {
@@ -697,7 +692,7 @@ textarea {
 .detail-intro > p,
 .gallery-copy,
 .gallery-copy p {
-  line-height: 1.98;
+  line-height: 1.45;
 }
 
 .facts {
@@ -936,10 +931,6 @@ textarea {
 }
 
 @media (max-width: 1100px) {
-  .split > p {
-    margin-block-start: 0;
-  }
-
   .split,
   .split--form,
   .step,
@@ -973,11 +964,6 @@ textarea {
 
   .page-block {
     padding-top: 96px;
-  }
-
-  .award-row > p:not(.award-meta),
-  .step > p:not(.step-num) {
-    margin-top: 0;
   }
 }
 
