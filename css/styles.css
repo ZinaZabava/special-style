@@ -1064,6 +1064,19 @@ body.lightbox-open .site-header {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --pad-x: 20px;
+    --stack-gap-s: 16px;
+    --stack-gap-m: 40px;
+    --stack-gap-l: 64px;
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.375;
+    text-underline-offset: -4px;
+  }
+
   .nav-links {
     display: none;
   }
@@ -1117,12 +1130,41 @@ body.lightbox-open .site-header {
   }
 
   .hero-copy h1 {
-    font-size: clamp(28px, 9vw, 40px);
+    font-size: 20px;
+    letter-spacing: 0.12em;
   }
 
-  .center-copy h2 {
-    font-size: clamp(22px, 7vw, 32px);
+  .center-copy h2,
+  .page-hero-lite h1 {
+    font-size: 22px;
     letter-spacing: 0.1em;
+  }
+
+  .label,
+  .kicker,
+  .facts dt,
+  .journal-meta,
+  .project-card h2,
+  .person h2,
+  .person p,
+  .hero-copy p,
+  .featured-meta,
+  .pager,
+  .nav-toggle {
+    font-size: 12px;
+  }
+
+  .facts dd {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .gallery-copy,
+  .gallery-copy p,
+  .detail-intro > p,
+  .split > p,
+  .lead p {
+    line-height: 1.375;
   }
 
   .kicker {
@@ -1200,20 +1242,40 @@ body.lightbox-open .site-header {
 
   .detail-intro {
     gap: var(--stack-gap-m);
-    padding: 96px var(--pad-x) var(--stack-gap-m);
+    padding: calc(var(--nav-h) + var(--stack-gap-m)) var(--pad-x) var(--stack-gap-m);
   }
 
   .facts {
     gap: var(--stack-gap-s);
   }
 
+  .facts div {
+    gap: 8px;
+  }
+
   .gallery-row {
-    gap: var(--stack-gap-s);
     padding-bottom: 0;
   }
 
+  .gallery-row--full {
+    grid-template-columns: 1fr;
+    gap: var(--stack-gap-m);
+  }
+
+  .gallery-row--2,
+  .gallery-row--2r,
+  .gallery-row--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .journal-media:not(.is-single) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
   .gallery-row + .gallery-copy {
-    margin-top: var(--stack-gap-s);
+    margin-top: 30px;
   }
 
   .gallery-copy {
@@ -1236,7 +1298,7 @@ body.lightbox-open .site-header {
 
   .thumb-mosaic {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
     padding-bottom: var(--stack-gap-m);
   }
 
@@ -1258,8 +1320,7 @@ body.lightbox-open .site-header {
 
   .team-grid,
   .award-covers,
-  .projects-grid,
-  .gallery-row--3 {
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1276,7 +1337,7 @@ body.lightbox-open .site-header {
   }
 
   .values p {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: var(--stack-gap-s);
   }
 
