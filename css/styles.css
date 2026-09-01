@@ -183,6 +183,10 @@ textarea {
   line-height: 1.4;
 }
 
+.hero-copy h1 + p {
+  display: none;
+}
+
 .page-block {
   padding: 192px var(--pad-x) 0;
 }
@@ -1212,8 +1216,13 @@ body.lightbox-open .site-header {
   }
 
   .hero-copy {
-    right: var(--pad-x);
-    max-width: calc(100% - 2 * var(--pad-x));
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: none;
+    padding: var(--pad-x);
+    text-align: center;
   }
 
   .hero-copy h1 {
@@ -1331,15 +1340,19 @@ body.lightbox-open .site-header {
   }
 
   .detail-intro > .facts {
-    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 12px;
+    margin-bottom: 16px;
   }
 
   .facts {
-    gap: var(--stack-gap-m);
+    gap: 0;
   }
 
   .facts div {
-    gap: var(--stack-gap-s);
+    gap: 4px;
   }
 
   .gallery-row {
