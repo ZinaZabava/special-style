@@ -1164,7 +1164,6 @@ body.lightbox-open .site-header {
     --project-mobile-landscape-height: 234px;
     --mobile-card-thumb-height: 220px;
     --mobile-card-landscape-thumb-height: 234px;
-    --project-mosaic-height: 80px;
   }
 
   .nav-links {
@@ -1621,30 +1620,31 @@ body.lightbox-open .site-header {
   }
 
   .project-detail .thumb-mosaic {
+    --mosaic-gap: 8px;
+    --mosaic-col: calc((100% - 3 * var(--mosaic-gap)) / 4);
+    --mosaic-thumb-height: calc(var(--mosaic-col) * 192 / 128);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
+    gap: var(--mosaic-gap);
     padding: 0 var(--pad-x) var(--stack-gap-l);
   }
 
   .project-detail .thumb-mosaic img {
     width: 100%;
+    height: var(--mosaic-thumb-height);
     display: block;
     object-fit: cover;
     object-position: center;
   }
 
-  .project-detail .thumb-mosaic img,
   .project-detail .thumb-mosaic img.mobile-portrait,
-  .project-detail .thumb-mosaic img.span-2 {
+  .project-detail .thumb-mosaic img.span-2:not(.mobile-landscape) {
     grid-column: span 1;
-    height: var(--project-mosaic-height);
   }
 
   .project-detail .thumb-mosaic img.mobile-landscape,
   .project-detail .thumb-mosaic img.span-2.mobile-landscape {
     grid-column: span 2;
-    height: var(--project-mosaic-height);
   }
 
   .project-detail .gallery-row + .gallery-copy,
