@@ -396,8 +396,7 @@ textarea {
   object-fit: cover;
 }
 
-.person h2,
-.person p {
+.person h2 {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 400;
@@ -408,7 +407,10 @@ textarea {
 }
 
 .person p {
-  font-weight: 400;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-serif);
+  line-height: var(--leading-serif);
 }
 
 .office-grid {
