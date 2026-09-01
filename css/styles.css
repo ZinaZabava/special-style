@@ -1251,7 +1251,7 @@ body.lightbox-open .site-header {
   }
 
   .award-row + .award-row {
-    margin-top: var(--stack-gap-m);
+    margin-top: var(--stack-gap-l);
   }
 
   .accordion-item.is-open .accordion-panel {
