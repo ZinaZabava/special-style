@@ -1630,16 +1630,12 @@ body.lightbox-open .site-header {
   }
 
   .project-detail .thumb-mosaic img {
+    grid-column: span 1;
     width: 100%;
     height: var(--mosaic-thumb-height);
     display: block;
     object-fit: cover;
     object-position: center;
-  }
-
-  .project-detail .thumb-mosaic img.mobile-portrait,
-  .project-detail .thumb-mosaic img.span-2:not(.mobile-landscape) {
-    grid-column: span 1;
   }
 
   .project-detail .thumb-mosaic img.mobile-landscape,
