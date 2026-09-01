@@ -1151,6 +1151,8 @@ body.lightbox-open .site-header {
     --stack-gap-l: 96px;
     --stack-gap-label: 40px;
     --stack-gap-caption: 16px;
+    --project-mobile-portrait-height: 480px;
+    --project-mobile-landscape-height: 234px;
   }
 
   .nav-links {
@@ -1485,10 +1487,10 @@ body.lightbox-open .site-header {
   .journal-media img,
   .journal-media.is-single img,
   .office-grid img,
-  .gallery-row img,
-  .frame,
+  body:not(.project-detail) .gallery-row img,
+  body:not(.project-detail) .frame,
   .award-covers img,
-  .thumb-mosaic img {
+  body:not(.project-detail) .thumb-mosaic img {
     height: auto;
     min-height: 0;
     object-fit: contain;
@@ -1533,31 +1535,69 @@ body.lightbox-open .site-header {
   .project-detail .gallery-row--full,
   .project-detail .gallery-row--2,
   .project-detail .gallery-row--2r,
-  .project-detail .gallery-row--3,
-  .project-detail .thumb-mosaic {
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-flow: row;
+  .project-detail .gallery-row--3 {
+    display: flex;
+    flex-direction: column;
     gap: 16px;
+    padding: 0 var(--pad-x);
+    padding-bottom: 0;
   }
 
-  .project-detail .gallery-row img,
-  .project-detail .gallery-row img.mobile-landscape,
-  .project-detail .gallery-row img.mobile-portrait,
+  .project-detail .gallery-row img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    flex: none;
+    height: var(--project-mobile-landscape-height);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .project-detail .gallery-row img.mobile-portrait {
+    height: var(--project-mobile-portrait-height);
+  }
+
+  .project-detail .gallery-row img.mobile-landscape {
+    height: var(--project-mobile-landscape-height);
+  }
+
+  .project-detail .detail-intro .frame {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    height: var(--project-mobile-landscape-height);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .project-detail .detail-intro .frame.mobile-portrait {
+    height: var(--project-mobile-portrait-height);
+  }
+
+  .project-detail .detail-intro .frame.mobile-landscape {
+    height: var(--project-mobile-landscape-height);
+  }
+
+  .project-detail .thumb-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding: 0 var(--pad-x) var(--stack-gap-l);
+  }
+
   .project-detail .thumb-mosaic img,
   .project-detail .thumb-mosaic img.span-2,
   .project-detail .thumb-mosaic img.mobile-landscape,
   .project-detail .thumb-mosaic img.mobile-portrait,
-  .project-detail .thumb-mosaic img.span-2.mobile-landscape,
-  .project-detail .detail-intro .frame,
-  .project-detail .detail-intro .frame.mobile-landscape,
-  .project-detail .detail-intro .frame.mobile-portrait {
-    grid-column: 1;
+  .project-detail .thumb-mosaic img.span-2.mobile-landscape {
+    grid-column: span 1;
     grid-row: auto;
     width: 100%;
-    max-width: 100%;
+    aspect-ratio: 1;
     height: auto;
     min-height: 0;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     display: block;
   }
 
