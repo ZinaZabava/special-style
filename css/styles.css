@@ -1343,8 +1343,8 @@ body.lightbox-open .site-header {
   .detail-intro > .facts {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 16px;
-    row-gap: 12px;
+    column-gap: 8px;
+    row-gap: 8px;
     margin-bottom: 16px;
   }
 
@@ -1353,7 +1353,7 @@ body.lightbox-open .site-header {
   }
 
   .facts div {
-    gap: 4px;
+    gap: 8px;
   }
 
   .gallery-row {
@@ -1652,9 +1652,21 @@ body.lightbox-open .site-header {
     margin-top: 0;
   }
 
-  .project-detail .gallery-copy {
+  .project-detail .gallery-copy,
+  .project-detail p.gallery-copy {
+    width: 100%;
+    max-width: none;
+    margin: 0;
     padding: var(--stack-gap-l) var(--pad-x);
-    margin-top: 0;
+    box-sizing: border-box;
+  }
+
+  .project-detail .detail-intro > p {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .project-detail .gallery-copy + .gallery-row,
