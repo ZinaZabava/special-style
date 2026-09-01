@@ -1545,6 +1545,10 @@ body.lightbox-open .site-header {
     padding-bottom: 0;
   }
 
+  .project-detail .gallery-row + .gallery-row {
+    margin-top: 16px;
+  }
+
   .project-detail .gallery-row img {
     width: 100%;
     max-width: 100%;
