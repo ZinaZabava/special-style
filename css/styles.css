@@ -1035,7 +1035,7 @@ body.lightbox-open .site-header {
   }
 
   .journal-item {
-    gap: 80px;
+    gap: var(--stack-gap-caption, 24px);
   }
 
   .journal-media {
@@ -1130,6 +1130,7 @@ body.lightbox-open .site-header {
     --stack-gap-m: 56px;
     --stack-gap-l: 96px;
     --stack-gap-label: 40px;
+    --stack-gap-caption: 24px;
   }
 
   .nav-links {
@@ -1258,7 +1259,7 @@ body.lightbox-open .site-header {
   }
 
   .journal-item {
-    gap: 40px;
+    gap: var(--stack-gap-caption);
   }
 
   .journal-item .split {
@@ -1286,7 +1287,7 @@ body.lightbox-open .site-header {
   }
 
   .detail-intro {
-    gap: var(--stack-gap-l);
+    gap: var(--stack-gap-m);
     padding: calc(var(--nav-h) + var(--stack-gap-l)) var(--pad-x) var(--stack-gap-l);
   }
 
@@ -1371,7 +1372,7 @@ body.lightbox-open .site-header {
   }
 
   .gallery-row + .gallery-copy {
-    margin-top: var(--stack-gap-m);
+    margin-top: var(--stack-gap-caption);
   }
 
   .gallery-copy {
