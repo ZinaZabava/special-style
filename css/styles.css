@@ -1257,7 +1257,7 @@ body.lightbox-open .site-header {
   }
 
   .page-block > .wrap + .wrap {
-    margin-top: var(--stack-gap-l);
+    margin-top: var(--stack-gap-m);
   }
 
   .split,
