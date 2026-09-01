@@ -1114,6 +1114,7 @@ body.lightbox-open .site-header {
   }
 
   .detail-intro > .facts {
+    margin-top: 0;
     margin-bottom: 24px;
   }
 
