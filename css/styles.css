@@ -1034,6 +1034,10 @@ body.lightbox-open .site-header {
     gap: var(--stack-gap-label, 40px);
   }
 
+  .journal-item {
+    gap: 80px;
+  }
+
   .journal-media {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1254,7 +1258,7 @@ body.lightbox-open .site-header {
   }
 
   .journal-item {
-    gap: var(--stack-gap-l);
+    gap: 40px;
   }
 
   .journal-item .split {
@@ -1265,15 +1269,12 @@ body.lightbox-open .site-header {
 
   .journal-media {
     grid-template-columns: 1fr;
+    margin-top: 0;
+    gap: 16px;
   }
 
   .journal-meta {
     gap: var(--stack-gap-s);
-  }
-
-  .journal-media {
-    margin-top: 0;
-    gap: var(--stack-gap-m);
   }
 
   .journal-item + .journal-item {
