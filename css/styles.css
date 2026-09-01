@@ -1440,27 +1440,6 @@ body.lightbox-open .site-header {
     gap: var(--stack-gap-caption);
   }
 
-  .project-detail .gallery-row--full,
-  .project-detail .gallery-row--2,
-  .project-detail .gallery-row--2r,
-  .project-detail .gallery-row--3 {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .project-detail .thumb-mosaic {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .project-detail .gallery-row img,
-  .project-detail .thumb-mosaic img,
-  .project-detail .detail-intro .frame {
-    grid-column: auto;
-    width: 100%;
-    max-width: 100%;
-  }
-
   .person h2 + p {
     margin-top: 4px;
   }
@@ -1548,5 +1527,37 @@ body.lightbox-open .site-header {
 
   .lightbox-next {
     right: 8px;
+  }
+
+  .project-detail .gallery-row,
+  .project-detail .gallery-row--full,
+  .project-detail .gallery-row--2,
+  .project-detail .gallery-row--2r,
+  .project-detail .gallery-row--3,
+  .project-detail .thumb-mosaic {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-flow: row;
+    gap: 16px;
+  }
+
+  .project-detail .gallery-row img,
+  .project-detail .gallery-row img.mobile-landscape,
+  .project-detail .gallery-row img.mobile-portrait,
+  .project-detail .thumb-mosaic img,
+  .project-detail .thumb-mosaic img.span-2,
+  .project-detail .thumb-mosaic img.mobile-landscape,
+  .project-detail .thumb-mosaic img.mobile-portrait,
+  .project-detail .thumb-mosaic img.span-2.mobile-landscape,
+  .project-detail .detail-intro .frame,
+  .project-detail .detail-intro .frame.mobile-landscape,
+  .project-detail .detail-intro .frame.mobile-portrait {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
+    display: block;
   }
 }
