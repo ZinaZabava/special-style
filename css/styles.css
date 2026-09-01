@@ -1440,6 +1440,27 @@ body.lightbox-open .site-header {
     gap: var(--stack-gap-caption);
   }
 
+  .project-detail .gallery-row--full,
+  .project-detail .gallery-row--2,
+  .project-detail .gallery-row--2r,
+  .project-detail .gallery-row--3 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-detail .thumb-mosaic {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .project-detail .gallery-row img,
+  .project-detail .thumb-mosaic img,
+  .project-detail .detail-intro .frame {
+    grid-column: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .person h2 + p {
     margin-top: 4px;
   }
