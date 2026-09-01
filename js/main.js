@@ -355,7 +355,27 @@
     });
   }
 
+  function ensureThumbMosaicLast() {
+    if (!document.body.classList.contains("project-detail")) return;
+    var mosaic = document.querySelector(".thumb-mosaic");
+    var pager = document.querySelector(".pager");
+    if (!mosaic || !pager) return;
+
+    var after = mosaic.nextElementSibling;
+    while (after && after !== pager) {
+      if (after.matches(".gallery-row, .gallery-copy, .detail-intro, .mosaic-frame")) {
+        mosaic.before(after);
+        after = mosaic.nextElementSibling;
+      } else {
+        after = after.nextElementSibling;
+      }
+    }
+
+    pager.before(mosaic);
+  }
+
   function applyMobileLayout() {
+    ensureThumbMosaicLast();
     applyMobileOrientation();
     reorderProjectsGrid();
     reorderThumbMosaics();
