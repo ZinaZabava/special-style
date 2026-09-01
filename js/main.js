@@ -156,6 +156,7 @@
   }
 
   function classifyMobileImage(img) {
+    if (!mobileImageMq.matches) return;
     var dims = getImageDimensions(img);
     if (!dims.w || !dims.h) return;
     var landscape = dims.w >= dims.h;
@@ -184,6 +185,7 @@
   function applyMobileOrientation() {
     if (!mobileImageMq.matches) {
       clearMobileOrientation();
+      restoreProjectsGridOrder();
       return;
     }
     document.querySelectorAll(orientationImgSelector).forEach(function (img) {

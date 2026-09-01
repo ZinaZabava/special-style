@@ -1150,6 +1150,13 @@ body.lightbox-open .site-header {
     height: auto;
     object-fit: contain;
   }
+
+  body.project-detail .gallery-row img,
+  body.project-detail .detail-intro .frame {
+    height: min(56vw, 480px);
+    min-height: 220px;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1686,5 +1693,81 @@ body.lightbox-open .site-header {
   .project-detail .gallery-copy + .thumb-mosaic,
   .project-detail .gallery-copy + .mosaic-frame {
     margin-top: 0;
+  }
+}
+
+@media (min-width: 1101px) {
+  body.project-detail .gallery-row,
+  body.project-detail .gallery-row--full,
+  body.project-detail .gallery-row--2,
+  body.project-detail .gallery-row--2r,
+  body.project-detail .gallery-row--3 {
+    display: grid;
+    gap: 16px;
+    padding: 0 var(--pad-x) 96px;
+  }
+
+  body.project-detail .gallery-row--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body.project-detail .gallery-row--2 {
+    grid-template-columns: 862px 1fr;
+  }
+
+  body.project-detail .gallery-row--2r {
+    grid-template-columns: 412px 1fr;
+  }
+
+  body.project-detail .gallery-row--full {
+    grid-template-columns: 1fr;
+  }
+
+  body.project-detail .gallery-row + .gallery-row {
+    margin-top: 0;
+  }
+
+  body.project-detail .gallery-row img,
+  body.project-detail .detail-intro .frame {
+    width: 100%;
+    max-width: none;
+    height: 618px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  body.project-detail .thumb-mosaic {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 20px;
+    padding: 0 var(--pad-x) 96px;
+  }
+
+  body.project-detail .thumb-mosaic img {
+    width: 100%;
+    height: 192px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    grid-column: auto;
+  }
+
+  body.project-detail .thumb-mosaic img.span-2,
+  body.project-detail .thumb-mosaic img.mobile-landscape,
+  body.project-detail .thumb-mosaic img.span-2.mobile-landscape {
+    grid-column: span 2;
+  }
+
+  body.project-detail .gallery-copy,
+  body.project-detail p.gallery-copy {
+    width: 637px;
+    max-width: calc(100% - 2 * var(--pad-x));
+    margin: 0 auto;
+    padding: 0 0 96px;
+  }
+
+  body.project-detail .detail-intro {
+    padding: 96px var(--pad-x);
   }
 }
