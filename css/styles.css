@@ -1437,7 +1437,7 @@ body.lightbox-open .site-header {
   }
 
   .project-card {
-    gap: var(--stack-gap-m);
+    gap: var(--stack-gap-caption);
   }
 
   .person h2 + p {
