@@ -774,6 +774,10 @@ textarea {
   text-box-edge: cap alphabetic;
 }
 
+.detail-intro > .facts {
+  margin-top: 10px;
+}
+
 .gallery-row {
   display: grid;
   gap: 16px;
