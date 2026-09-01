@@ -10,6 +10,10 @@
   --font-serif: "Cormorant", serif;
   --font-sc: "Cormorant SC", "Cormorant", serif;
   --font-garamond: "Cormorant Garamond", "Cormorant", serif;
+  --text-sans: 12px;
+  --text-serif: 21px;
+  --leading-sans: 1.4;
+  --leading-serif: 1.6;
   --header-opacity: 1;
   --stack-gap-s: 24px;
   --stack-gap-m: 48px;
@@ -35,8 +39,8 @@ body {
   color: var(--charcoal);
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 21px;
-  line-height: 1.6;
+  font-size: var(--text-serif);
+  line-height: var(--leading-serif);
   text-wrap: pretty;
   text-underline-offset: -6px;
   -webkit-font-smoothing: antialiased;
@@ -102,7 +106,7 @@ textarea {
   gap: clamp(20px, 8vw, 148px);
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -173,7 +177,7 @@ textarea {
   margin: 16px 0 0;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -215,7 +219,7 @@ textarea {
 .kicker {
   margin: 31px 0 0;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--olive);
@@ -250,7 +254,7 @@ textarea {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -259,8 +263,8 @@ textarea {
 .values p {
   margin: 32px 0 0;
   font-family: var(--font-serif);
-  font-size: inherit;
-  line-height: 1.6;
+  font-size: var(--text-serif);
+  line-height: var(--leading-serif);
 }
 
 .featured-meta {
@@ -270,7 +274,7 @@ textarea {
   gap: 24px;
   margin-top: 64px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -290,7 +294,7 @@ textarea {
   display: grid;
   grid-template-columns: 359px 1fr;
   gap: 92px;
-  align-items: start;
+  align-items: baseline;
 }
 
 .split > p,
@@ -298,32 +302,36 @@ textarea {
   margin: 0;
 }
 
-.split > p {
-  margin-block-start: -6.5px;
-}
-
 .split > .label,
 .split > p,
 .values h3,
 .values p,
+.label,
+.step-num,
+.step > p:not(.step-num),
+.award-meta,
+.award-row > p:not(.award-meta),
+.facts dt,
+.facts dd,
 .journal-meta a,
 .journal-meta .title,
 .featured-meta p,
 .featured-meta a {
-  text-box-trim: trim-start;
+  text-box-trim: trim-end;
   text-box-edge: cap alphabetic;
 }
 
 .split--form {
   grid-template-columns: 359px minmax(0, 661px);
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .label {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -382,17 +390,14 @@ textarea {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  line-height: var(--leading-sans);
 }
 
 .person p {
-  font-size: calc(12px * 2 / 3);
-}
-
-.person h2 + p {
-  margin-top: -8px;
+  font-weight: 400;
 }
 
 .office-grid {
@@ -443,7 +448,7 @@ textarea {
   cursor: pointer;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: left;
@@ -474,27 +479,28 @@ textarea {
   display: grid;
   grid-template-columns: 451px 1fr;
   gap: 0 8px;
+  align-items: baseline;
 }
 
 .step-num {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  line-height: var(--leading-sans);
 }
 
 .step > p:not(.step-num) {
   margin: 0;
-  margin-top: -14px;
 }
 
 .award-row {
   display: grid;
   grid-template-columns: 451px 1fr;
   gap: 8px;
-  align-items: start;
+  align-items: baseline;
 }
 
 .award-row + .award-row {
@@ -510,13 +516,14 @@ textarea {
   gap: 8px;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  line-height: var(--leading-sans);
 }
 
 .award-row > p:not(.award-meta) {
-  margin-top: -14px;
+  margin: 0;
 }
 
 .award-meta span:first-child {
@@ -575,7 +582,7 @@ textarea {
   color: var(--charcoal);
   padding: 16px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -603,7 +610,7 @@ textarea {
   padding: 0;
   color: var(--olive);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: underline;
@@ -643,7 +650,7 @@ textarea {
   margin: 0;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -680,7 +687,7 @@ textarea {
   flex-direction: column;
   gap: 32px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -726,13 +733,14 @@ textarea {
   justify-content: space-between;
   gap: 24px;
   padding: 96px var(--pad-x);
+  align-items: baseline;
 }
 
 .project-copy,
 .detail-intro > p,
 .gallery-copy,
 .gallery-copy p {
-  line-height: 1.6;
+  line-height: var(--leading-serif);
 }
 
 .facts {
@@ -748,7 +756,7 @@ textarea {
 
 .facts dt {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -756,10 +764,10 @@ textarea {
 
 .facts dd {
   margin: 0;
-  font-family: var(--font-garamond);
-  font-size: 21px;
-  line-height: 1.5;
-  text-box-trim: trim-both;
+  font-family: var(--font-serif);
+  font-size: var(--text-serif);
+  line-height: var(--leading-serif);
+  text-box-trim: trim-end;
   text-box-edge: cap alphabetic;
 }
 
@@ -886,7 +894,7 @@ body.lightbox-open .site-header {
 .lightbox-close {
   top: 24px;
   right: var(--pad-x);
-  font-size: 12px;
+  font-size: var(--text-sans);
 }
 
 .lightbox-prev,
@@ -912,7 +920,7 @@ body.lightbox-open .site-header {
   gap: 64px;
   padding: 56px var(--pad-x);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
@@ -951,7 +959,7 @@ body.lightbox-open .site-header {
   gap: 10px;
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
@@ -980,7 +988,7 @@ body.lightbox-open .site-header {
   background: none;
   padding: 0;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: inherit;
@@ -1056,6 +1064,14 @@ body.lightbox-open .site-header {
     margin-top: 0;
   }
 
+  .split,
+  .step,
+  .award-row,
+  .detail-intro,
+  .split--form {
+    align-items: baseline;
+  }
+
   .kicker,
   .hero-copy p,
   .featured-meta,
@@ -1090,12 +1106,6 @@ body.lightbox-open .site-header {
     --stack-gap-s: 16px;
     --stack-gap-m: 40px;
     --stack-gap-l: 64px;
-  }
-
-  body {
-    font-size: 16px;
-    line-height: 1.375;
-    text-underline-offset: -4px;
   }
 
   .nav-links {
@@ -1161,31 +1171,12 @@ body.lightbox-open .site-header {
     letter-spacing: 0.1em;
   }
 
-  .label,
-  .kicker,
-  .facts dt,
-  .journal-meta,
-  .project-card h2,
-  .person h2,
-  .person p,
-  .hero-copy p,
-  .featured-meta,
-  .pager,
-  .nav-toggle {
-    font-size: 12px;
-  }
-
-  .facts dd {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-
   .gallery-copy,
   .gallery-copy p,
   .detail-intro > p,
   .split > p,
   .lead p {
-    line-height: 1.375;
+    line-height: var(--leading-serif);
   }
 
   .kicker {
