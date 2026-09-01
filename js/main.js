@@ -162,7 +162,10 @@
     img.classList.toggle("mobile-landscape", landscape);
     img.classList.toggle("mobile-portrait", !landscape);
     var card = img.closest(".project-card");
-    if (card) card.classList.toggle("is-landscape", landscape);
+    if (card) {
+      card.classList.toggle("is-landscape", landscape);
+      scheduleProjectsGridReorder();
+    }
     var person = img.closest(".person");
     if (person) person.classList.toggle("is-landscape", landscape);
   }
@@ -237,9 +240,85 @@
     });
   }
 
+  var projectGridRestores = [];
+  var projectsGridReorderTimer;
+
+  function scheduleProjectsGridReorder() {
+    if (!mobileImageMq.matches) return;
+    clearTimeout(projectsGridReorderTimer);
+    projectsGridReorderTimer = setTimeout(reorderProjectsGrid, 40);
+  }
+
+  function restoreProjectsGridOrder() {
+    projectGridRestores.forEach(function (item) {
+      item.order.forEach(function (card) {
+        item.grid.appendChild(card);
+      });
+    });
+    projectGridRestores.length = 0;
+  }
+
+  function isWideProjectCard(card) {
+    return card.classList.contains("is-landscape") || card.classList.contains("is-wide");
+  }
+
+  function packProjectCards(cards) {
+    var remaining = cards.slice();
+    var output = [];
+    var col = 0;
+
+    while (remaining.length > 0) {
+      var card = remaining[0];
+      var wide = isWideProjectCard(card);
+
+      if (wide) {
+        if (col === 1) {
+          var portraitIdx = -1;
+          for (var i = 1; i < remaining.length; i += 1) {
+            if (!isWideProjectCard(remaining[i])) {
+              portraitIdx = i;
+              break;
+            }
+          }
+          if (portraitIdx > 0) {
+            output.push(remaining.splice(portraitIdx, 1)[0]);
+            col = 0;
+          }
+        }
+        remaining.shift();
+        output.push(card);
+        col = 0;
+      } else {
+        remaining.shift();
+        output.push(card);
+        col = col === 0 ? 1 : 0;
+      }
+    }
+
+    return output;
+  }
+
+  function reorderProjectsGrid() {
+    restoreProjectsGridOrder();
+    if (!mobileImageMq.matches) return;
+
+    document.querySelectorAll(".projects-grid").forEach(function (grid) {
+      var cards = Array.from(grid.querySelectorAll(":scope > .project-card"));
+      if (!cards.length) return;
+
+      projectGridRestores.push({ grid: grid, order: cards.slice() });
+
+      var packed = packProjectCards(cards);
+      packed.forEach(function (card) {
+        grid.appendChild(card);
+      });
+    });
+  }
+
   function applyMobileLayout() {
     applyMobileGalleryOrder();
     applyMobileOrientation();
+    reorderProjectsGrid();
   }
 
   applyMobileLayout();
