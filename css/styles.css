@@ -1031,8 +1031,8 @@ body.lightbox-open .site-header {
 
   .gallery-row img,
   .frame {
-    height: min(56vw, 480px);
-    min-height: 220px;
+    height: auto;
+    object-fit: contain;
   }
 }
 
@@ -1142,18 +1142,29 @@ body.lightbox-open .site-header {
     gap: 8px;
   }
 
-  .thumb-mosaic img {
-    height: 28vw;
-    min-height: 96px;
+  .hero img {
+    object-fit: contain;
+    object-position: center;
   }
 
   .person .thumb,
-  .project-card .thumb,
+  .project-card .thumb {
+    height: auto;
+    overflow: visible;
+  }
+
+  .person img,
+  .project-card img,
   .journal-media img,
   .journal-media.is-single img,
-  .office-grid img {
-    height: min(70vw, 420px);
-    min-height: 220px;
+  .office-grid img,
+  .gallery-row img,
+  .frame,
+  .award-covers img,
+  .thumb-mosaic img {
+    height: auto;
+    min-height: 0;
+    object-fit: contain;
   }
 
   .journal-item + .journal-item {
