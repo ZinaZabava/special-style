@@ -3,7 +3,7 @@
   --charcoal: #210e10;
   --olive: #656311;
   --white: #ffffff;
-  --nav-h: 80px;
+  --nav-h: 60px;
   --pad-x: clamp(20px, 4.4vw, 64px);
   --content: 1112px;
   --font-sans: "Jost", sans-serif;
@@ -86,8 +86,8 @@ textarea {
 }
 
 .logo {
-  width: 65px;
-  height: 80px;
+  width: 48.75px;
+  height: 60px;
   flex-shrink: 0;
   color: var(--charcoal);
 }
@@ -325,7 +325,7 @@ textarea {
 .step > p:not(.step-num),
 .award-row > p:not(.award-meta) {
   position: relative;
-  top: 3.5px;
+  top: 2px;
 }
 
 .split--form {
@@ -944,8 +944,8 @@ body.lightbox-open .site-header {
 
 .footer-logo {
   display: block;
-  width: 161.5px;
-  height: 90px;
+  width: 121.125px;
+  height: 67.5px;
   flex-shrink: 0;
   color: var(--beige);
 }
