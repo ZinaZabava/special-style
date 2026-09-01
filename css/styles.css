@@ -323,8 +323,7 @@ textarea {
 
 .split > p,
 .step > p:not(.step-num),
-.award-row > p:not(.award-meta),
-.detail-intro > p {
+.award-row > p:not(.award-meta) {
   position: relative;
   top: 3.5px;
 }
@@ -741,7 +740,7 @@ textarea {
   justify-content: space-between;
   gap: 24px;
   padding: 96px var(--pad-x);
-  align-items: baseline;
+  align-items: start;
 }
 
 .project-copy,
@@ -1075,15 +1074,17 @@ body.lightbox-open .site-header {
   .split,
   .step,
   .award-row,
-  .detail-intro,
   .split--form {
     align-items: baseline;
   }
 
+  .detail-intro {
+    align-items: start;
+  }
+
   .split > p,
   .step > p:not(.step-num),
-  .award-row > p:not(.award-meta),
-  .detail-intro > p {
+  .award-row > p:not(.award-meta) {
     top: 0;
   }
 
