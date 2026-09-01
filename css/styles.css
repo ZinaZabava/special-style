@@ -1352,7 +1352,7 @@ body.lightbox-open .site-header {
   }
 
   .facts div {
-    gap: 8px;
+    gap: 0;
   }
 
   .gallery-row {
