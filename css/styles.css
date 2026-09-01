@@ -1657,6 +1657,11 @@ body.lightbox-open .site-header {
     box-sizing: border-box;
   }
 
+  .project-detail .detail-intro {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
   .project-detail .detail-intro > p {
     width: 100%;
     max-width: none;
