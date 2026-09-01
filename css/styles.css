@@ -321,6 +321,14 @@ textarea {
   text-box-edge: cap alphabetic;
 }
 
+.split > p,
+.step > p:not(.step-num),
+.award-row > p:not(.award-meta),
+.detail-intro > p {
+  position: relative;
+  top: 3.5px;
+}
+
 .split--form {
   grid-template-columns: 359px minmax(0, 661px);
   justify-content: space-between;
@@ -1070,6 +1078,13 @@ body.lightbox-open .site-header {
   .detail-intro,
   .split--form {
     align-items: baseline;
+  }
+
+  .split > p,
+  .step > p:not(.step-num),
+  .award-row > p:not(.award-meta),
+  .detail-intro > p {
+    top: 0;
   }
 
   .kicker,
