@@ -253,16 +253,14 @@ textarea {
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  text-align: center;
   line-height: 1.4;
 }
 
 .values p {
   margin: 32px 0 0;
-  font-family: var(--font-garamond);
-  font-size: 21px;
-  line-height: 1.5;
-  text-align: center;
+  font-family: var(--font-serif);
+  font-size: inherit;
+  line-height: 1.6;
 }
 
 .featured-meta {
@@ -306,6 +304,8 @@ textarea {
 
 .split > .label,
 .split > p,
+.values h3,
+.values p,
 .journal-meta a,
 .journal-meta .title,
 .featured-meta p,
@@ -1351,7 +1351,6 @@ body.lightbox-open .site-header {
   }
 
   .values p {
-    font-size: 18px;
     margin-top: var(--stack-gap-s);
   }
 
