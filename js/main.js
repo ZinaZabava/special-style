@@ -140,4 +140,63 @@
       if (event.key === "ArrowRight") openAt(current + 1);
     });
   }
+
+  var mobileImageMq = window.matchMedia("(max-width: 720px)");
+  var orientationImgSelector =
+    ".gallery-row img, .thumb-mosaic img, .journal-media img, .mosaic-frame img, .project-card img, .person img, .award-covers img, .office-grid img, .detail-intro .frame";
+
+  function getImageDimensions(img) {
+    var w = img.naturalWidth;
+    var h = img.naturalHeight;
+    if (!w || !h) {
+      w = parseInt(img.getAttribute("width"), 10) || 0;
+      h = parseInt(img.getAttribute("height"), 10) || 0;
+    }
+    return { w: w, h: h };
+  }
+
+  function classifyMobileImage(img) {
+    var dims = getImageDimensions(img);
+    if (!dims.w || !dims.h) return;
+    var landscape = dims.w >= dims.h;
+    img.classList.toggle("mobile-landscape", landscape);
+    img.classList.toggle("mobile-portrait", !landscape);
+    var card = img.closest(".project-card");
+    if (card) card.classList.toggle("is-landscape", landscape);
+    var person = img.closest(".person");
+    if (person) person.classList.toggle("is-landscape", landscape);
+  }
+
+  function clearMobileOrientation() {
+    document.querySelectorAll(".mobile-landscape, .mobile-portrait").forEach(function (el) {
+      el.classList.remove("mobile-landscape", "mobile-portrait");
+    });
+    document.querySelectorAll(".project-card.is-landscape, .person.is-landscape").forEach(function (el) {
+      el.classList.remove("is-landscape");
+    });
+  }
+
+  function applyMobileOrientation() {
+    if (!mobileImageMq.matches) {
+      clearMobileOrientation();
+      return;
+    }
+    document.querySelectorAll(orientationImgSelector).forEach(function (img) {
+      if (img.complete && img.naturalWidth) {
+        classifyMobileImage(img);
+        return;
+      }
+      img.addEventListener(
+        "load",
+        function () {
+          classifyMobileImage(img);
+        },
+        { once: true }
+      );
+    });
+  }
+
+  applyMobileOrientation();
+  mobileImageMq.addEventListener("change", applyMobileOrientation);
+  window.addEventListener("resize", applyMobileOrientation);
 })();

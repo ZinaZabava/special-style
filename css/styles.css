@@ -1039,7 +1039,7 @@ body.lightbox-open .site-header {
   }
 
   .journal-media {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 
@@ -1268,9 +1268,13 @@ body.lightbox-open .site-header {
   }
 
   .journal-media {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 0;
     gap: 16px;
+  }
+
+  .journal-media.is-single {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .journal-meta {
@@ -1299,15 +1303,71 @@ body.lightbox-open .site-header {
   }
 
   .gallery-row--full {
-    grid-template-columns: 1fr;
-    gap: var(--stack-gap-m);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .gallery-row--2,
   .gallery-row--2r,
   .gallery-row--3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .gallery-row img.mobile-landscape,
+  .thumb-mosaic img.mobile-landscape,
+  .journal-media img.mobile-landscape,
+  .mosaic-frame img.mobile-landscape,
+  .team-grid .person.is-landscape,
+  .award-covers img.mobile-landscape,
+  .office-row img.mobile-landscape,
+  .detail-intro .frame.mobile-landscape {
+    grid-column: span 2;
+  }
+
+  .thumb-mosaic img.span-2 {
+    grid-column: span 1;
+  }
+
+  .thumb-mosaic img.span-2.mobile-landscape {
+    grid-column: span 2;
+  }
+
+  .mosaic-frame {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .team-grid,
+  .award-covers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .office-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .office-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .projects-grid .project-card.is-landscape,
+  .projects-grid .project-card.is-wide {
+    grid-column: span 2;
+  }
+
+  .detail-intro .frame.mobile-portrait {
+    width: calc((100% - 16px) / 2);
+    max-width: calc((100% - 16px) / 2);
   }
 
   .gallery-row + .gallery-copy {
@@ -1334,16 +1394,12 @@ body.lightbox-open .site-header {
 
   .thumb-mosaic {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 16px;
     padding-bottom: var(--stack-gap-l);
   }
 
   .mosaic-frame {
     padding-bottom: var(--stack-gap-l);
-  }
-
-  .projects-grid {
-    gap: var(--stack-gap-l);
   }
 
   .project-card {
@@ -1352,17 +1408,6 @@ body.lightbox-open .site-header {
 
   .person h2 + p {
     margin-top: 4px;
-  }
-
-  .team-grid,
-  .award-covers,
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .team-grid,
-  .award-covers {
-    gap: var(--stack-gap-l);
   }
 
   .values {
