@@ -1199,14 +1199,16 @@ body.lightbox-open .site-header {
   }
 
   .hero {
+    aspect-ratio: 1;
     height: auto;
     min-height: 0;
   }
 
   .hero img {
     width: 100%;
-    height: auto;
-    object-fit: initial;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hero-copy {
