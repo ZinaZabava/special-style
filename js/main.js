@@ -19,8 +19,27 @@
   window.addEventListener("resize", updateHeader);
 
   if (toggle && header) {
+    function setNavOpen(open) {
+      header.classList.toggle("is-open", open);
+      document.body.classList.toggle("nav-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.textContent = open ? "Закрыть" : "Меню";
+    }
+
+    toggle.setAttribute("aria-expanded", "false");
     toggle.addEventListener("click", function () {
-      header.classList.toggle("is-open");
+      setNavOpen(!header.classList.contains("is-open"));
+    });
+    header.querySelectorAll(".nav-links a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setNavOpen(false);
+      });
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setNavOpen(false);
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 720) setNavOpen(false);
     });
   }
 
@@ -88,12 +107,14 @@
       picture.alt = img.alt || "";
       overlay.hidden = false;
       document.body.style.overflow = "hidden";
+      document.body.classList.add("lightbox-open");
     }
 
     function closeLightbox() {
       overlay.hidden = true;
       picture.removeAttribute("src");
       document.body.style.overflow = "";
+      document.body.classList.remove("lightbox-open");
     }
 
     slides.forEach(function (img, index) {
