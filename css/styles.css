@@ -1456,6 +1456,8 @@ body.lightbox-open .site-header {
   .is-about .person p {
     grid-column: 2;
     white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 
   .is-about .person h2 {
@@ -1464,6 +1466,10 @@ body.lightbox-open .site-header {
 
   .is-about .person h2 + p {
     margin-top: 0;
+  }
+
+  .is-about .office-grid {
+    gap: 9px;
   }
 
   .is-about .office-row {
@@ -1475,7 +1481,10 @@ body.lightbox-open .site-header {
     grid-template-columns: minmax(0, 224fr) minmax(0, 107fr);
   }
 
-  .is-about .office-grid img {
+  .is-about .office-row img,
+  .is-about .office-row img.mobile-landscape,
+  .is-about .office-row img.mobile-portrait {
+    grid-column: auto;
     width: 100%;
     height: var(--journal-media-height);
     object-fit: cover;
@@ -1657,7 +1666,6 @@ body.lightbox-open .site-header {
   .mosaic-frame img.mobile-landscape,
   .team-grid .person.is-landscape,
   .award-covers img.mobile-landscape,
-  .office-row img.mobile-landscape,
   .detail-intro .frame.mobile-landscape {
     grid-column: span 2;
   }
@@ -1811,6 +1819,16 @@ body.lightbox-open .site-header {
     height: auto;
     min-height: 0;
     object-fit: contain;
+  }
+
+  .is-about .office-row img {
+    height: var(--journal-media-height);
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .is-about .person .thumb {
+    height: 144px;
   }
 
   .person img {
