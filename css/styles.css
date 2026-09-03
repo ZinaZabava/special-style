@@ -1557,7 +1557,11 @@ body.lightbox-open .site-header {
   }
 
   .journal-item {
-    gap: var(--stack-gap-s);
+    gap: 0;
+  }
+
+  .journal-item > .split {
+    margin-bottom: var(--stack-gap-s);
   }
 
   .journal-item .split {
@@ -1568,6 +1572,12 @@ body.lightbox-open .site-header {
 
   .journal-meta {
     gap: 10px;
+  }
+
+  .journal-meta > * {
+    margin: 0;
+    text-box-trim: trim-end;
+    text-box-edge: cap alphabetic;
   }
 
   .journal-meta .title,
