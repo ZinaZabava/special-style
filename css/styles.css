@@ -286,12 +286,14 @@ textarea {
 
 .featured-meta p {
   margin: 0;
+  font-weight: 600;
 }
 
 .featured-meta a {
   color: var(--olive);
   text-decoration: underline;
   text-underline-offset: 3px;
+  font-weight: 600;
 }
 
 .split {
@@ -1025,12 +1027,17 @@ body.lightbox-open .site-header {
   text-transform: uppercase;
 }
 
+.page-hero-lite .kicker {
+  font-weight: 600;
+}
+
 .nav-toggle {
   display: none;
   border: 0;
   background: none;
   padding: 0;
   font-family: var(--font-sans);
+  font-weight: 600;
   font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
