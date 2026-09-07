@@ -753,9 +753,14 @@ textarea {
 .journal-media {
   display: grid;
   grid-template-columns: 356px minmax(0, 734px);
-  justify-content: space-between;
-  gap: 0;
+  justify-content: start;
+  gap: 16px;
   margin-top: 0;
+}
+
+/* Stacked media rows use the same 16px as the in-row gap (parent .journal-item gap is 128px). */
+.journal-media + .journal-media {
+  margin-top: calc(16px - 128px);
 }
 
 .journal-media.is-single {
@@ -1099,7 +1104,11 @@ body.lightbox-open .site-header {
 
   .journal-media {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .journal-media + .journal-media {
+    margin-top: 0;
   }
 
   .gallery-row {
