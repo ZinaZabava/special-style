@@ -758,6 +758,10 @@ textarea {
   margin-top: 0;
 }
 
+.journal-media.journal-media--triple {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* Stacked media rows use the same 16px as the in-row gap (parent .journal-item gap is 128px). */
 .journal-media + .journal-media {
   margin-top: calc(16px - 128px);
@@ -1105,6 +1109,10 @@ body.lightbox-open .site-header {
   .journal-media {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
+  }
+
+  .journal-media.journal-media--triple {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .journal-media + .journal-media {
