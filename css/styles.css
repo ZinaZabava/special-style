@@ -1138,8 +1138,13 @@ body.lightbox-open .site-header {
 
   .gallery-copy + .gallery-row,
   .gallery-copy + .thumb-mosaic,
-  .gallery-copy + .mosaic-frame {
+  .gallery-copy + .mosaic-frame,
+  .gallery-row + .thumb-mosaic {
     margin-top: var(--stack-gap-l, 80px);
+  }
+
+  .gallery-row:has(+ .thumb-mosaic) {
+    margin-bottom: var(--stack-gap-l, 80px);
   }
 
   .team-grid,
@@ -1709,6 +1714,11 @@ body.lightbox-open .site-header {
     padding-bottom: 0;
   }
 
+  .gallery-row:has(+ .thumb-mosaic),
+  .gallery-row:has(+ .mosaic-frame) {
+    margin-bottom: var(--stack-gap-l);
+  }
+
   .gallery-row--full,
   .gallery-row--2,
   .gallery-row--2r,
@@ -2102,6 +2112,10 @@ body.lightbox-open .site-header {
   .project-detail .gallery-copy + .thumb-mosaic,
   .project-detail .gallery-copy + .mosaic-frame {
     margin-top: 0;
+  }
+
+  .project-detail .gallery-row:has(+ .thumb-mosaic) {
+    margin-bottom: var(--stack-gap-l);
   }
 
   /* Home: stack intro / values / projects with wireframe section gaps */
