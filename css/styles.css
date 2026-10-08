@@ -912,7 +912,7 @@ textarea {
 .thumb-mosaic {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  gap: 20px;
+  gap: 8px;
   padding: 0 var(--pad-x) 96px;
 }
 
@@ -2237,7 +2237,7 @@ body.lightbox-open .site-header {
   body.project-detail .thumb-mosaic {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 20px;
+    gap: 8px;
     padding: 0 var(--pad-x) 96px;
   }
 
