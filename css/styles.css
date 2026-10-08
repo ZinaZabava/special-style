@@ -832,27 +832,47 @@ textarea {
 
 .gallery-row {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   padding: 0 var(--pad-x) 96px;
+  align-items: start;
 }
 
 .gallery-row--3 {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .gallery-row--2 {
-  grid-template-columns: 862px 1fr;
+  grid-template-columns: minmax(0, 862fr) minmax(0, 412fr);
 }
 
 .gallery-row--2r {
-  grid-template-columns: 412px 1fr;
+  grid-template-columns: minmax(0, 412fr) minmax(0, 862fr);
 }
 
 .gallery-row--full {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.gallery-row img,
+.gallery-row img {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 412 / 618;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gallery-row--2 > img:first-child,
+.gallery-row--2r > img:last-child {
+  aspect-ratio: 862 / 618;
+}
+
+.gallery-row--full img {
+  aspect-ratio: 1290 / 618;
+}
+
 .frame {
   width: 100%;
   height: 618px;
@@ -1075,7 +1095,10 @@ body.lightbox-open .site-header {
   .office-grid,
   .office-row,
   .office-row--nw,
-  .office-row--wn,
+  .office-row--wn {
+    grid-template-columns: 1fr;
+  }
+
   .gallery-row--2,
   .gallery-row--2r {
     grid-template-columns: 1fr;
@@ -1224,11 +1247,43 @@ body.lightbox-open .site-header {
     object-fit: contain;
   }
 
-  body.project-detail .gallery-row img,
   body.project-detail .detail-intro .frame {
     height: min(56vw, 480px);
     min-height: 220px;
     object-fit: cover;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1100px) {
+  body.project-detail .gallery-row--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body.project-detail .gallery-row--2 {
+    grid-template-columns: minmax(0, 862fr) minmax(0, 412fr);
+  }
+
+  body.project-detail .gallery-row--2r {
+    grid-template-columns: minmax(0, 412fr) minmax(0, 862fr);
+  }
+
+  body.project-detail .gallery-row img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 412 / 618;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  body.project-detail .gallery-row--2 > img:first-child,
+  body.project-detail .gallery-row--2r > img:last-child {
+    aspect-ratio: 862 / 618;
+    height: auto;
+  }
+
+  body.project-detail .gallery-row--full img {
+    aspect-ratio: 1290 / 618;
   }
 }
 
@@ -2015,6 +2070,7 @@ body.lightbox-open .site-header {
     display: block;
     flex: none;
     height: var(--project-mobile-landscape-height);
+    aspect-ratio: auto;
     object-fit: cover;
     object-position: center;
   }
@@ -2126,36 +2182,49 @@ body.lightbox-open .site-header {
 
 @media (min-width: 1101px) {
   body.project-detail .gallery-row,
-  body.project-detail .gallery-row--full,
-  body.project-detail .gallery-row--2,
-  body.project-detail .gallery-row--2r,
   body.project-detail .gallery-row--3 {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
     padding: 0 var(--pad-x) 96px;
   }
 
-  body.project-detail .gallery-row--3 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   body.project-detail .gallery-row--2 {
-    grid-template-columns: 862px 1fr;
+    grid-template-columns: minmax(0, 862fr) minmax(0, 412fr);
   }
 
   body.project-detail .gallery-row--2r {
-    grid-template-columns: 412px 1fr;
+    grid-template-columns: minmax(0, 412fr) minmax(0, 862fr);
   }
 
   body.project-detail .gallery-row--full {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body.project-detail .gallery-row + .gallery-row {
     margin-top: 0;
   }
 
-  body.project-detail .gallery-row img,
+  body.project-detail .gallery-row img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 412 / 618;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  body.project-detail .gallery-row--2 > img:first-child,
+  body.project-detail .gallery-row--2r > img:last-child {
+    aspect-ratio: 862 / 618;
+    height: auto;
+  }
+
+  body.project-detail .gallery-row--full img {
+    aspect-ratio: 1290 / 618;
+  }
+
   body.project-detail .detail-intro .frame {
     width: 100%;
     max-width: none;
