@@ -800,12 +800,13 @@ textarea {
 .facts {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 28px;
 }
 
 .facts div {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .facts dt {
@@ -815,6 +816,8 @@ textarea {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.4;
+  text-box-trim: both;
+  text-box-edge: cap alphabetic;
 }
 
 .facts dd {
@@ -822,19 +825,29 @@ textarea {
   font-family: var(--font-serif);
   font-size: var(--text-serif);
   line-height: var(--leading-serif);
-  text-box-trim: trim-end;
+  text-box-trim: both;
   text-box-edge: cap alphabetic;
 }
 
 .detail-intro > .facts {
-  margin-top: 10px;
+  margin-top: 0;
+}
+
+.detail-intro > p {
+  margin: 0;
+  text-box-trim: trim-start;
+  text-box-edge: cap alphabetic;
 }
 
 .gallery-row {
+  --gallery-gap: 16px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  padding: 0 var(--pad-x) 96px;
+  gap: var(--gallery-gap);
+  margin: 0 var(--pad-x) 96px;
+  padding: 0;
+  container-type: inline-size;
+  align-items: stretch;
 }
 
 .gallery-row--3,
@@ -851,8 +864,9 @@ textarea {
   width: 100%;
   max-width: none;
   min-width: 0;
-  height: 100%;
-  aspect-ratio: 412 / 618;
+  display: block;
+  height: calc((100cqw - 2 * var(--gallery-gap)) / 3 * 618 / 412);
+  aspect-ratio: auto;
   object-fit: cover;
   object-position: center;
 }
@@ -860,12 +874,11 @@ textarea {
 .gallery-row--2 > img:first-child,
 .gallery-row--2r > img:last-child {
   grid-column: span 2;
-  aspect-ratio: auto;
 }
 
 .gallery-row--full img {
-  aspect-ratio: 1290 / 618;
   height: auto;
+  aspect-ratio: 1290 / 618;
 }
 
 .frame {
@@ -890,7 +903,8 @@ textarea {
 }
 
 .gallery-copy .kicker-line {
-  color: var(--olive);
+  --kicker: var(--olive);
+  color: var(--kicker);
   margin: 0 0 1.1em;
 }
 
@@ -1146,6 +1160,7 @@ body.lightbox-open .site-header {
   .gallery-row {
     gap: 20px;
     padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .gallery-copy {
@@ -1248,8 +1263,8 @@ body.lightbox-open .site-header {
     object-fit: contain;
   }
 
-  body.project-detail .gallery-row img {
-    height: 100%;
+  body.project-detail .gallery-row:not(.gallery-row--full) img {
+    height: calc((100cqw - 2 * var(--gallery-gap, 16px)) / 3 * 618 / 412);
     object-fit: cover;
   }
 
@@ -1267,11 +1282,11 @@ body.lightbox-open .site-header {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  body.project-detail .gallery-row img {
+  body.project-detail .gallery-row:not(.gallery-row--full) img {
     width: 100%;
     max-width: none;
-    height: 100%;
-    aspect-ratio: 412 / 618;
+    height: calc((100cqw - 2 * var(--gallery-gap, 16px)) / 3 * 618 / 412);
+    aspect-ratio: auto;
     object-fit: cover;
     object-position: center;
   }
@@ -1279,8 +1294,6 @@ body.lightbox-open .site-header {
   body.project-detail .gallery-row--2 > img:first-child,
   body.project-detail .gallery-row--2r > img:last-child {
     grid-column: span 2;
-    aspect-ratio: auto;
-    height: 100%;
   }
 
   body.project-detail .gallery-row--full img {
@@ -2080,8 +2093,11 @@ body.lightbox-open .site-header {
     display: flex;
     flex-direction: column;
     gap: var(--stack-gap-s);
+    margin-inline: 0;
+    margin-bottom: 0;
     padding: 0 var(--pad-x);
     padding-bottom: 0;
+    container-type: normal;
   }
 
   .project-detail .gallery-row + .gallery-row {
@@ -2198,6 +2214,10 @@ body.lightbox-open .site-header {
     margin-bottom: var(--stack-gap-l);
   }
 
+  .project-detail .gallery-row + .thumb-mosaic {
+    margin-top: 0;
+  }
+
   /* Home: stack intro / values / projects with wireframe section gaps */
   .page-block .center-copy + .wrap {
     margin-top: var(--stack-gap-section);
@@ -2209,10 +2229,13 @@ body.lightbox-open .site-header {
   body.project-detail .gallery-row--3,
   body.project-detail .gallery-row--2,
   body.project-detail .gallery-row--2r {
+    --gallery-gap: 16px;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    padding: 0 var(--pad-x) 96px;
+    gap: var(--gallery-gap);
+    margin: 0 var(--pad-x) 96px;
+    padding: 0;
+    container-type: inline-size;
   }
 
   body.project-detail .gallery-row--full {
@@ -2223,11 +2246,11 @@ body.lightbox-open .site-header {
     margin-top: 0;
   }
 
-  body.project-detail .gallery-row img {
+  body.project-detail .gallery-row:not(.gallery-row--full) img {
     width: 100%;
     max-width: none;
-    height: 100%;
-    aspect-ratio: 412 / 618;
+    height: calc((100cqw - 2 * var(--gallery-gap)) / 3 * 618 / 412);
+    aspect-ratio: auto;
     display: block;
     object-fit: cover;
     object-position: center;
@@ -2236,8 +2259,6 @@ body.lightbox-open .site-header {
   body.project-detail .gallery-row--2 > img:first-child,
   body.project-detail .gallery-row--2r > img:last-child {
     grid-column: span 2;
-    aspect-ratio: auto;
-    height: 100%;
   }
 
   body.project-detail .gallery-row--full img {
