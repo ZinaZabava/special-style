@@ -844,10 +844,13 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gallery-gap);
-  margin: 0 var(--pad-x) 96px;
+  width: calc(100% - 2 * var(--pad-x));
+  margin: 0 auto 96px;
   padding: 0;
+  box-sizing: border-box;
   container-type: inline-size;
   align-items: stretch;
+  justify-items: stretch;
 }
 
 .gallery-row--3,
@@ -858,14 +861,16 @@ textarea {
 
 .gallery-row--full {
   grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: auto;
 }
 
 .gallery-row img {
   width: 100%;
+  height: calc((100cqw - 2 * var(--gallery-gap)) / 3 * 618 / 412);
   max-width: none;
   min-width: 0;
+  min-height: 0;
   display: block;
-  height: calc((100cqw - 2 * var(--gallery-gap)) / 3 * 618 / 412);
   aspect-ratio: auto;
   object-fit: cover;
   object-position: center;
@@ -919,26 +924,33 @@ textarea {
 }
 
 .thumb-mosaic {
+  --mosaic-gap: 8px;
   display: grid;
   grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: 8px;
-  padding: 0 var(--pad-x) 96px;
-  align-items: start;
+  gap: var(--mosaic-gap);
+  width: calc(100% - 2 * var(--pad-x));
+  margin: 0 auto 96px;
+  padding: 0;
+  box-sizing: border-box;
+  container-type: inline-size;
+  align-items: stretch;
+  justify-items: stretch;
 }
 
 .thumb-mosaic img {
   width: 100%;
+  height: calc((100cqw - 8 * var(--mosaic-gap)) / 9 * 3 / 2);
   max-width: none;
   min-width: 0;
-  height: auto;
-  aspect-ratio: 2 / 3;
+  min-height: 0;
+  display: block;
+  aspect-ratio: auto;
   object-fit: cover;
   object-position: center;
 }
 
 .thumb-mosaic .span-2 {
   grid-column: span 2;
-  aspect-ratio: 4 / 3;
 }
 
 .js-lightbox img {
@@ -1284,8 +1296,9 @@ body.lightbox-open .site-header {
 
   body.project-detail .gallery-row:not(.gallery-row--full) img {
     width: 100%;
-    max-width: none;
     height: calc((100cqw - 2 * var(--gallery-gap, 16px)) / 3 * 618 / 412);
+    max-width: none;
+    min-height: 0;
     aspect-ratio: auto;
     object-fit: cover;
     object-position: center;
@@ -1302,17 +1315,23 @@ body.lightbox-open .site-header {
   }
 
   body.project-detail .thumb-mosaic {
+    --mosaic-gap: 8px;
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
-    gap: 8px;
-    padding: 0 var(--pad-x) 96px;
+    gap: var(--mosaic-gap);
+    width: calc(100% - 2 * var(--pad-x));
+    margin: 0 auto 96px;
+    padding: 0;
+    box-sizing: border-box;
+    container-type: inline-size;
   }
 
   body.project-detail .thumb-mosaic img {
     width: 100%;
+    height: calc((100cqw - 8 * var(--mosaic-gap)) / 9 * 3 / 2);
     max-width: none;
-    height: auto;
-    aspect-ratio: 2 / 3;
+    min-height: 0;
+    aspect-ratio: auto;
     object-fit: cover;
     object-position: center;
     grid-column: auto;
@@ -1320,7 +1339,6 @@ body.lightbox-open .site-header {
 
   body.project-detail .thumb-mosaic img.span-2 {
     grid-column: span 2;
-    aspect-ratio: 4 / 3;
   }
 }
 
@@ -2093,6 +2111,7 @@ body.lightbox-open .site-header {
     display: flex;
     flex-direction: column;
     gap: var(--stack-gap-s);
+    width: 100%;
     margin-inline: 0;
     margin-bottom: 0;
     padding: 0 var(--pad-x);
@@ -2144,20 +2163,24 @@ body.lightbox-open .site-header {
     --mosaic-gap: 4px;
     width: min(340px, calc(100% - 2 * var(--pad-x)));
     margin-inline: auto;
+    margin-bottom: var(--stack-gap-l);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: auto;
     gap: var(--mosaic-gap);
-    padding: 0 0 var(--stack-gap-l);
+    padding: 0;
     box-sizing: border-box;
+    container-type: inline-size;
+    align-items: stretch;
+    justify-items: stretch;
   }
 
   .project-detail .thumb-mosaic img {
     grid-column: span 1;
     grid-row: span 1;
     width: 100%;
-    height: auto;
-    aspect-ratio: 82 / 109;
+    height: calc((100cqw - 3 * var(--mosaic-gap)) / 4 * 109 / 82);
+    min-height: 0;
+    aspect-ratio: auto;
     display: block;
     object-fit: cover;
     object-position: center;
@@ -2165,7 +2188,6 @@ body.lightbox-open .site-header {
 
   .project-detail .thumb-mosaic img.mobile-landscape {
     grid-column: span 2;
-    aspect-ratio: 168 / 109;
   }
 
   .project-detail .thumb-mosaic img.span-2 {
@@ -2174,7 +2196,6 @@ body.lightbox-open .site-header {
 
   .project-detail .thumb-mosaic img.span-2.mobile-landscape {
     grid-column: span 2;
-    aspect-ratio: 168 / 109;
   }
 
   .project-detail .gallery-row + .gallery-copy,
@@ -2233,13 +2254,18 @@ body.lightbox-open .site-header {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--gallery-gap);
-    margin: 0 var(--pad-x) 96px;
+    width: calc(100% - 2 * var(--pad-x));
+    margin: 0 auto 96px;
     padding: 0;
+    box-sizing: border-box;
     container-type: inline-size;
+    align-items: stretch;
+    justify-items: stretch;
   }
 
   body.project-detail .gallery-row--full {
     grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
   }
 
   body.project-detail .gallery-row + .gallery-row {
@@ -2248,8 +2274,9 @@ body.lightbox-open .site-header {
 
   body.project-detail .gallery-row:not(.gallery-row--full) img {
     width: 100%;
-    max-width: none;
     height: calc((100cqw - 2 * var(--gallery-gap)) / 3 * 618 / 412);
+    max-width: none;
+    min-height: 0;
     aspect-ratio: auto;
     display: block;
     object-fit: cover;
@@ -2276,25 +2303,30 @@ body.lightbox-open .site-header {
   }
 
   body.project-detail .thumb-mosaic {
+    --mosaic-gap: 8px;
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
-    gap: 8px;
-    padding: 0 var(--pad-x) 96px;
+    gap: var(--mosaic-gap);
+    width: calc(100% - 2 * var(--pad-x));
+    margin: 0 auto 96px;
+    padding: 0;
+    box-sizing: border-box;
+    container-type: inline-size;
+    align-items: stretch;
+    justify-items: stretch;
   }
 
   body.project-detail .thumb-mosaic img {
     width: 100%;
+    height: calc((100cqw - 8 * var(--mosaic-gap)) / 9 * 3 / 2);
     max-width: none;
-    height: auto;
-    aspect-ratio: 2 / 3;
+    min-width: 0;
+    min-height: 0;
+    aspect-ratio: auto;
     display: block;
     object-fit: cover;
     object-position: center;
     grid-column: auto;
-  }
-
-  body.project-detail .thumb-mosaic img.span-2 {
-    aspect-ratio: 4 / 3;
   }
 
   body.project-detail .thumb-mosaic img.span-2,
