@@ -527,7 +527,7 @@ textarea {
   display: grid;
   grid-template-columns: 451px 1fr;
   gap: 8px;
-  align-items: start;
+  align-items: baseline;
 }
 
 .award-thumb {
@@ -541,6 +541,9 @@ textarea {
 .award-title {
   margin: 0;
   grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  top: 8px;
 }
 
 .award-meta {
@@ -548,6 +551,7 @@ textarea {
   gap: 8px;
   margin: 0;
   grid-column: 1;
+  grid-row: 1;
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: var(--text-sans);
@@ -738,6 +742,7 @@ textarea {
 .journal-meta a,
 .journal-meta .title {
   font-weight: 600;
+  white-space: normal;
 }
 
 .journal-meta a {
