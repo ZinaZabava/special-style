@@ -176,12 +176,17 @@
         <input type="text" name="name" placeholder="Имя фамилия" required />
         <input type="email" name="email" placeholder="Email" required />
         <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+        <label class="form-consent">
+          <input type="checkbox" name="consent" required />
+          <span>Я даю <a href="consent.html">согласие на обработку персональных данных</a></span>
+        </label>
         <button type="submit">Отправить</button>
       </form>
     </div>
   </section>
 
   <footer class="site-footer">
+    <div class="footer-stack">
     <div class="footer-links">
       <a href="https://t.me/special_style" target="_blank" rel="noopener noreferrer">Telegram</a>
       <span>|</span>
@@ -190,6 +195,8 @@
       <a href="mailto:mail@special-style.ru">Mail</a>
       <span>|</span>
       <a href="#office">Москва</a>
+    </div>
+      <a class="footer-legal" href="privacy.html">Политика обработки персональных данных</a>
     </div>
     <a class="footer-logo" href="index.html" aria-label="Special-Style">
       <img src="assets/logos/footer.svg" alt="" width="162" height="90" />

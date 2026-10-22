@@ -62,6 +62,10 @@
   if (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
+      if (form.elements.consent && !form.elements.consent.checked) {
+        form.elements.consent.focus();
+        return;
+      }
       var name = form.elements.name.value.trim();
       var email = form.elements.email.value.trim();
       var message = form.elements.message.value.trim();
@@ -74,6 +78,39 @@
       window.location.href = "mailto:mail@special-style.ru?subject=" + subject + "&body=" + body;
     });
   }
+
+  (function setupCookieBanner() {
+    var key = "special-style-cookie-consent";
+    try {
+      if (localStorage.getItem(key)) return;
+    } catch (err) {
+      return;
+    }
+    var root = /\/projects\//.test(location.pathname) ? "../" : "";
+    var banner = document.createElement("div");
+    banner.className = "cookie-banner";
+    banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-label", "Использование файлов cookie");
+    banner.innerHTML =
+      "<p>Мы используем файлы cookie и сервис «Яндекс Метрика», чтобы понимать, как посетители пользуются сайтом. Метрика включится только после вашего согласия. Подробнее — в <a href=\"" +
+      root +
+      "privacy.html\">Политике обработки персональных данных</a> и на странице об <a href=\"" +
+      root +
+      "cookies.html\">использовании cookie</a>.</p>" +
+      "<div class=\"cookie-banner-actions\">" +
+      "<button type=\"button\" data-cookie=\"accept\">Принять</button>" +
+      "<button type=\"button\" data-cookie=\"reject\">Отклонить</button>" +
+      "</div>";
+    document.body.appendChild(banner);
+    banner.addEventListener("click", function (event) {
+      var choice = event.target.getAttribute("data-cookie");
+      if (!choice) return;
+      try {
+        localStorage.setItem(key, choice);
+      } catch (err) {}
+      banner.remove();
+    });
+  })();
 
   var mosaicRoots = document.querySelectorAll(".js-lightbox");
   if (mosaicRoots.length) {
@@ -386,4 +423,5 @@
   applyMobileLayout();
   mobileImageMq.addEventListener("change", applyMobileLayout);
   window.addEventListener("resize", applyMobileLayout);
+
 })();
