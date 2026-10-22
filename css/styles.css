@@ -1206,7 +1206,7 @@ body.lightbox-open .site-header {
   z-index: 40;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 20px 32px;
   padding: 20px var(--pad-x) calc(20px + env(safe-area-inset-bottom, 0px));
