@@ -329,7 +329,8 @@ textarea {
 }
 
 .split > p,
-.step > p:not(.step-num) {
+.step > p:not(.step-num),
+.award-title {
   position: relative;
   top: 2px;
 }
@@ -542,8 +543,6 @@ textarea {
   margin: 0;
   grid-column: 2;
   grid-row: 1;
-  position: relative;
-  top: 8px;
 }
 
 .award-meta {
@@ -669,7 +668,7 @@ textarea {
 }
 
 .form-consent a {
-  color: var(--olive);
+  color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -686,8 +685,7 @@ textarea {
   font-size: var(--text-sans);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
   cursor: pointer;
 }
 
