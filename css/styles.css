@@ -2324,7 +2324,7 @@ body:has(.legal-doc) .page-hero-lite h1 {
     max-width: 100%;
     display: block;
     flex: none;
-    height: var(--project-mobile-landscape-height);
+    height: var(--project-mobile-portrait-height);
     aspect-ratio: auto;
     object-fit: cover;
     object-position: center;

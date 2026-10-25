@@ -194,6 +194,29 @@
 
   function classifyMobileImage(img) {
     if (!mobileImageMq.matches) return;
+
+    var row = img.closest(".project-detail .gallery-row");
+    if (row) {
+      var rowImgs = Array.from(row.querySelectorAll(":scope > img"));
+      var index = rowImgs.indexOf(img);
+      var landscape =
+        row.classList.contains("gallery-row--full") ||
+        (row.classList.contains("gallery-row--2") && index === 0) ||
+        (row.classList.contains("gallery-row--2r") && index === rowImgs.length - 1);
+      img.classList.toggle("mobile-landscape", landscape);
+      img.classList.toggle("mobile-portrait", !landscape);
+      return;
+    }
+
+    var mosaic = img.closest(".project-detail .thumb-mosaic");
+    if (mosaic) {
+      var mosaicLandscape = img.classList.contains("span-2");
+      img.classList.toggle("mobile-landscape", mosaicLandscape);
+      img.classList.toggle("mobile-portrait", !mosaicLandscape);
+      scheduleThumbMosaicReorder();
+      return;
+    }
+
     var dims = getImageDimensions(img);
     if (!dims.w || !dims.h) return;
     var landscape = dims.w >= dims.h;
@@ -204,8 +227,6 @@
       card.classList.toggle("is-landscape", landscape);
       scheduleProjectsGridReorder();
     }
-    var mosaic = img.closest(".project-detail .thumb-mosaic");
-    if (mosaic) scheduleThumbMosaicReorder();
     var person = img.closest(".person");
     if (person) person.classList.toggle("is-landscape", landscape);
   }
@@ -334,44 +355,45 @@
   }
 
   function isWideMosaicImage(img) {
-    return img.classList.contains("mobile-landscape");
+    return img.classList.contains("span-2") || img.classList.contains("mobile-landscape");
+  }
+
+  function mosaicUnit(img) {
+    return isWideMosaicImage(img) ? 2 : 1;
   }
 
   function packMosaicImages(images) {
     var remaining = images.slice();
     var output = [];
-    var col = 0;
+    var used = 0;
+
+    function findFit(need) {
+      for (var i = 0; i < remaining.length; i += 1) {
+        if (mosaicUnit(remaining[i]) === need) return i;
+      }
+      return -1;
+    }
 
     while (remaining.length > 0) {
-      var img = remaining[0];
-      var wide = isWideMosaicImage(img);
+      var space = 4 - used;
+      var next = remaining[0];
+      var width = mosaicUnit(next);
 
-      if (wide) {
-        if (col === 1 || col === 3) {
-          var portraitIdx = -1;
-          for (var i = 1; i < remaining.length; i += 1) {
-            if (!isWideMosaicImage(remaining[i])) {
-              portraitIdx = i;
-              break;
-            }
-          }
-          if (portraitIdx > 0) {
-            output.push(remaining.splice(portraitIdx, 1)[0]);
-            col += 1;
-            if (col > 3) col = 0;
-          }
+      if (width > space) {
+        var fitIdx = findFit(space);
+        if (fitIdx >= 0) {
+          output.push(remaining.splice(fitIdx, 1)[0]);
+          used = 0;
+          continue;
         }
-        if (col > 2) col = 0;
-        remaining.shift();
-        output.push(img);
-        col += 2;
-        if (col > 3) col = 0;
-      } else {
-        remaining.shift();
-        output.push(img);
-        col += 1;
-        if (col > 3) col = 0;
+        used = 0;
+        continue;
       }
+
+      remaining.shift();
+      output.push(next);
+      used += width;
+      if (used >= 4) used = 0;
     }
 
     return output;
