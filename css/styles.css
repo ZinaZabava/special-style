@@ -2018,8 +2018,6 @@ body:has(.legal-doc) .page-hero-lite h1 {
     gap: var(--stack-gap-s);
   }
 
-  .gallery-row img.mobile-landscape,
-  .thumb-mosaic img.mobile-landscape,
   .mosaic-frame img.mobile-landscape,
   .team-grid .person.is-landscape,
   .award-covers img.mobile-landscape,
@@ -2028,10 +2026,6 @@ body:has(.legal-doc) .page-hero-lite h1 {
   }
 
   .thumb-mosaic img.span-2 {
-    grid-column: span 1;
-  }
-
-  .thumb-mosaic img.span-2.mobile-landscape {
     grid-column: span 2;
   }
 
@@ -2113,7 +2107,7 @@ body:has(.legal-doc) .page-hero-lite h1 {
     object-position: center;
   }
 
-  .thumb-mosaic img.mobile-landscape {
+  .thumb-mosaic img.span-2 {
     aspect-ratio: 168 / 109;
   }
 
@@ -2330,11 +2324,9 @@ body:has(.legal-doc) .page-hero-lite h1 {
     object-position: center;
   }
 
-  .project-detail .gallery-row img.mobile-portrait {
-    height: var(--project-mobile-portrait-height);
-  }
-
-  .project-detail .gallery-row img.mobile-landscape {
+  .project-detail .gallery-row--full img,
+  .project-detail .gallery-row--2 > img:first-child,
+  .project-detail .gallery-row--2r > img:last-child {
     height: var(--project-mobile-landscape-height);
   }
 
@@ -2382,15 +2374,7 @@ body:has(.legal-doc) .page-hero-lite h1 {
     object-position: center;
   }
 
-  .project-detail .thumb-mosaic img.mobile-landscape {
-    grid-column: span 2;
-  }
-
   .project-detail .thumb-mosaic img.span-2 {
-    grid-column: span 1;
-  }
-
-  .project-detail .thumb-mosaic img.span-2.mobile-landscape {
     grid-column: span 2;
   }
 
