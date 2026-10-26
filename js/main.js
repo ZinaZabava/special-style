@@ -75,7 +75,7 @@
           (email ? "Email: " + email + "\n\n" : "") +
           message
       );
-      window.location.href = "mailto:mail@special-style.ru?subject=" + subject + "&body=" + body;
+      window.location.href = "mailto:a.rykova@s-style.design?subject=" + subject + "&body=" + body;
     });
   }
 
