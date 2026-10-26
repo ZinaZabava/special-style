@@ -1455,17 +1455,6 @@ body:has(.legal-doc) .page-hero-lite h1 {
     height: auto;
     object-fit: contain;
   }
-
-  body.project-detail .gallery-row:not(.gallery-row--full) img {
-    height: calc((100cqw - 2 * var(--gallery-gap, 16px)) / 3 * 618 / 412);
-    object-fit: cover;
-  }
-
-  body.project-detail .detail-intro .frame {
-    height: min(56vw, 480px);
-    min-height: 220px;
-    object-fit: cover;
-  }
 }
 
 @media (min-width: 721px) and (max-width: 1100px) {
@@ -2293,11 +2282,11 @@ body:has(.legal-doc) .page-hero-lite h1 {
     white-space: normal;
   }
 
-  .project-detail .gallery-row,
-  .project-detail .gallery-row--full,
-  .project-detail .gallery-row--2,
-  .project-detail .gallery-row--2r,
-  .project-detail .gallery-row--3 {
+  body.project-detail .gallery-row,
+  body.project-detail .gallery-row--full,
+  body.project-detail .gallery-row--2,
+  body.project-detail .gallery-row--2r,
+  body.project-detail .gallery-row--3 {
     display: flex;
     flex-direction: column;
     gap: var(--stack-gap-s);
@@ -2307,27 +2296,29 @@ body:has(.legal-doc) .page-hero-lite h1 {
     padding: 0 var(--pad-x);
     padding-bottom: 0;
     container-type: normal;
+    grid-template-columns: none;
   }
 
-  .project-detail .gallery-row + .gallery-row {
+  body.project-detail .gallery-row + .gallery-row {
     margin-top: var(--stack-gap-s);
   }
 
-  .project-detail .gallery-row img {
+  body.project-detail .gallery-row img {
     width: 100%;
     max-width: 100%;
     display: block;
     flex: none;
-    height: var(--project-mobile-portrait-height);
-    aspect-ratio: auto;
+    height: auto;
+    aspect-ratio: 340 / 453;
     object-fit: cover;
     object-position: center;
   }
 
-  .project-detail .gallery-row--full img,
-  .project-detail .gallery-row--2 > img:first-child,
-  .project-detail .gallery-row--2r > img:last-child {
-    height: var(--project-mobile-landscape-height);
+  body.project-detail .gallery-row--full img,
+  body.project-detail .gallery-row--2 > img:first-child,
+  body.project-detail .gallery-row--2r > img:last-child {
+    height: auto;
+    aspect-ratio: 340 / 226;
   }
 
   .project-detail .detail-intro .frame {
@@ -2347,7 +2338,7 @@ body:has(.legal-doc) .page-hero-lite h1 {
     height: var(--project-mobile-landscape-height);
   }
 
-  .project-detail .thumb-mosaic {
+  body.project-detail .thumb-mosaic {
     --mosaic-gap: 4px;
     width: min(340px, calc(100% - 2 * var(--pad-x)));
     margin-inline: auto;
@@ -2357,25 +2348,26 @@ body:has(.legal-doc) .page-hero-lite h1 {
     gap: var(--mosaic-gap);
     padding: 0;
     box-sizing: border-box;
-    container-type: inline-size;
+    container-type: normal;
     align-items: stretch;
     justify-items: stretch;
   }
 
-  .project-detail .thumb-mosaic img {
+  body.project-detail .thumb-mosaic img {
     grid-column: span 1;
     grid-row: span 1;
     width: 100%;
-    height: calc((100cqw - 3 * var(--mosaic-gap)) / 4 * 109 / 82);
+    height: auto;
+    aspect-ratio: 82 / 109;
     min-height: 0;
-    aspect-ratio: auto;
     display: block;
     object-fit: cover;
     object-position: center;
   }
 
-  .project-detail .thumb-mosaic img.span-2 {
+  body.project-detail .thumb-mosaic img.span-2 {
     grid-column: span 2;
+    aspect-ratio: 168 / 109;
   }
 
   .project-detail .gallery-row + .gallery-copy,
